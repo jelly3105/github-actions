@@ -1,0 +1,15 @@
+name: First Workflow
+on: workflow_dispatch
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Greeting
+      run: echo "Hello World"
+    - name: Print multi-line commands
+      run: |
+        echo "Output 1"
+        echo "Output 2"
+    - name: Print Goodbye
+      run: echo "Goodbye World"
