@@ -6,9 +6,9 @@ on:
       - main
   workflow_dispatch:
   push:
-    # branches:
-    #   - main
-    #   - 'dev-*'
+    branches:
+      - main
+      - 'dev-*'
     paths:
       - 'src/App.jsx'
   
