@@ -1,8 +1,16 @@
-name: Events Demo 1
+name: Events Activity Type
 on:
   pull_request:
     types: opened
+    branches:
+      - main
   workflow_dispatch:
+  push:
+    # branches:
+    #   - main
+    #   - 'dev-*'
+    paths:
+      - 'src/App.jsx'
   
 jobs:
   deploy:
