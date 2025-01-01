@@ -1,4 +1,4 @@
-name: controlling-execution-flow-if
+name: controlling-execution-flow-continue-on-error
 on:
   push:
     branches:
@@ -36,9 +36,14 @@ jobs:
         run: npm ci
       - name: Test code
         id: run-tests
+        continue-on-error: true
         run: npm run test
+      - name: some tests
+        run: |
+          echo ${{ steps.run-tests.outcome}}
+          echo ${{ steps.run-tests.conclusion}}
       - name: Upload test report
-        if: failure() && steps.run-tests.outcome == 'failure'
+        # if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
