@@ -1,0 +1,20 @@
+name: Matrix
+on: push
+jobs:
+    build:
+        strategy:
+            matrix:
+                node-version: [12,14,16]
+                op-sys: [ubuntu-latest, windows-latest]
+        runs-on: ${{ matrix.op-sys }}
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v3
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: Install and build
+              run: |
+                npm ci
+                npm run build
