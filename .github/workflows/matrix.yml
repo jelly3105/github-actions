@@ -7,6 +7,13 @@ jobs:
             matrix:
                 node-version: [12,14,16]
                 op-sys: [ubuntu-latest, windows-latest]
+                include:
+                    - node-version: 18
+                      op-sys: ubuntu-latest
+                      npm: 6
+                exclude:
+                    - node-version: 12
+                      op-sys: windows-latest
         runs-on: ${{ matrix.op-sys }}
         steps:
             - name: Get Code
